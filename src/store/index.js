@@ -1,7 +1,7 @@
 import { createStore } from 'vuex';
 const { Octokit } = require('@octokit/core');
 
-const token = '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';
+const token = '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';
 const octokit = new Octokit({ auth: token });
 
 export default createStore({
