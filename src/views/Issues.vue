@@ -22,7 +22,6 @@
 					v-for="issue in paginatedIssues"
 					:key="issue.id"
 					:issue="issue"
-					@click="log"
 				/>
 			</div>
 			<p v-else class="nothing">Ничего нет..</p>
@@ -97,9 +96,11 @@ export default {
 			return this.$store.getters.getIsLoading;
 		},
 		filteredIssues() {
-			return this.issues.filter((iss) =>
-				iss.title.includes(this.searchText)
-			);
+			if (this.issues) {
+				return this.issues.filter((iss) =>
+					iss.title.includes(this.searchText)
+				);
+			}
 		},
 		startIndex() {
 			return (this.page - 1) * this.issuesInPage;
@@ -111,81 +112,82 @@ export default {
 			return this.filteredIssues.slice(this.startIndex, this.endIndex);
 		},
 		hasNextPage() {
-			return this.startIndex < this.filteredIssues.length - this.page;
+			if (this.filteredIssues) {
+				return this.startIndex < this.filteredIssues.length - this.page;
+			}
 		}
 	}
 };
 </script>
 
 <style lang='sass' scoped>
-$grey: #e1e4e8
-$low-blue-bg: #f6f8fa
+@import '../variables/variables.sass'
 
 .issues
-  width: 100%
-  height: 100%
-  display: flex
-  justify-content: center
-  align-items: center
-  flex-direction: column
-  &__title
-    font-size: 48px
-    text-align: center
-  &__container
-    width: 80%
-    border: 1px solid $grey
-    border-radius: 6px
-  &__sorts
-    width: 100%
-    height: 50px
-    background-color: $low-blue-bg
-    border-bottom: 1px solid $grey
-    display: flex
-    justify-content: space-between
-    align-items: center
-    padding: 0 20px
+	width: 100%
+	height: 100%
+	display: flex
+	justify-content: center
+	align-items: center
+	flex-direction: column
+	&__title
+		font-size: 48px
+		text-align: center
+	&__container
+		width: 80%
+		border: 1px solid $grey
+		border-radius: 6px
+	&__sorts
+		width: 100%
+		height: 50px
+		background-color: $low-blue-bg
+		border-bottom: 1px solid $grey
+		display: flex
+		justify-content: space-between
+		align-items: center
+		padding: 0 20px
 
 .sort
-  &__left-panel
-    display: flex
-    align-items: center
-    flex-wrap: wrap
-  &__counter
-    font-weight: 600
-  &__name
-    margin-left: 20px
-    border: 1px solid $grey
-    &:focus
-      outline: none
-  &__id
-    cursor: pointer
+	&__left-panel
+		display: flex
+		align-items: center
+		flex-wrap: wrap
+	&__counter
+		font-weight: 600
+	&__name
+		margin-left: 20px
+		border: 1px solid $grey
+		&:focus
+			outline: none
+	&__id
+		cursor: pointer
 
 .pagination
-  display: flex
-  justify-content: space-between
-  align-items: center
-  margin-top: 40px
+	display: flex
+	justify-content: space-between
+	align-items: center
+	margin-top: 40px
 
 .prev,
 .next
-  font-size: 26px
-  color: #56aaff
-  text-decoration: underline
-  cursor: pointer
-  margin: 0 20px
+	font-size: 26px
+	color: #56aaff
+	text-decoration: underline
+	cursor: pointer
+	margin: 0 20px
 
 .deactive
-  color: grey
-  cursor: default
-  text-decoration: none
+	color: grey
+	cursor: default
+	text-decoration: none
 
 .load
-  filter: blur(20px)
+	filter: blur(20px)
 
 @media (max-width: 768px)
-  .issues
-    &__container
-      width: 100%
-    &__sorts
-      height: 100px
+	.issues
+		&__container
+			width: 100%
+		&__sorts
+			height: 100px
 </style>

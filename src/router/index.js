@@ -4,19 +4,19 @@ import AboutIssue from '../views/AboutIssue.vue';
 
 const routes = [
 	{
-		path: '/',
-		name: 'Issues',
+		path: '',
 		component: Issues
 	},
 	{
-		path: '/about/:id',
-		name: 'AboutIssue',
-		component: AboutIssue
+		path: '/issue/:id',
+		component: AboutIssue,
+		name: 'issue',
+		props: true
 	}
 ];
 
 const router = createRouter({
-	history: createWebHistory(process.env.BASE_URL),
+	history: createWebHistory(),
 	routes
 });
 
