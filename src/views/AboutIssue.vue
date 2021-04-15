@@ -61,7 +61,7 @@ export default {
 	width: 100%
 	display: flex
 	justify-content: center
-	padding-top: 200px
+	padding-top: 100px
 	position: relative
 
 .about-issue

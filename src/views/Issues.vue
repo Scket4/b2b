@@ -193,4 +193,9 @@ export default {
 			width: 100%
 		&__sorts
 			height: 100px
+	.sort__left-panel
+		justify-content: flex-start
+	.sort__name
+		margin-left: 0
+		margin-top: 20px
 </style>
