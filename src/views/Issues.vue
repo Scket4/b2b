@@ -11,7 +11,6 @@
 						type="text"
 						class="sort__name"
 						placeholder="Поиск"
-						@input="filterList"
 						v-model="searchText"
 					/>
 				</div>
@@ -100,6 +99,8 @@ export default {
 				return this.issues.filter((iss) =>
 					iss.title.includes(this.searchText)
 				);
+			} else {
+				return [];
 			}
 		},
 		startIndex() {
@@ -114,6 +115,8 @@ export default {
 		hasNextPage() {
 			if (this.filteredIssues) {
 				return this.startIndex < this.filteredIssues.length - this.page;
+			} else {
+				return false;
 			}
 		}
 	}

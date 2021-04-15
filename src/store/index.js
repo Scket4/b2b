@@ -1,45 +1,38 @@
-import { createStore } from 'vuex';
-const { Octokit } = require('@octokit/core');
+import Vue from 'vue'
+import Vuex from 'vuex'
+import { getIssues } from './api'
 
-const token = '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';
-const octokit = new Octokit({ auth: token });
+Vue.use(Vuex)
 
-export default createStore({
+export default new Vuex.Store({
 	state() {
 		return {
 			issues: [],
-			isLoading: false
-		};
+			isLoading: false,
+		}
 	},
 	mutations: {
 		setNewIssues(state, newIssues) {
-			state.issues = newIssues;
+			state.issues = newIssues
 		},
 		changeIsLoading(state) {
-			state.isLoading = !state.isLoading;
-		}
+			state.isLoading = !state.isLoading
+		},
 	},
 	actions: {
 		async getIssuesFromApi(context) {
-			context.commit('changeIsLoading');
-			const newIssues = await octokit.request(
-				'GET /repos/{owner}/{repo}/issues',
-				{
-					owner: 'vuejs',
-					repo: 'vue'
-				}
-			);
-			context.commit('setNewIssues', newIssues);
-			context.commit('changeIsLoading');
-		}
+			context.commit('changeIsLoading')
+			const newIssues = await getIssues()
+			context.commit('setNewIssues', newIssues)
+			context.commit('changeIsLoading')
+		},
 	},
 	getters: {
 		getIssues(state) {
-			return state.issues;
+			return state.issues
 		},
 		getIsLoading(state) {
-			return state.isLoading;
-		}
+			return state.isLoading
+		},
 	},
-	modules: {}
-});
+})

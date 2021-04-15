@@ -1,5 +1,5 @@
 <template>
-	<router-view></router-view>
+    <router-view />
 </template>
 
 <style lang="sass">
@@ -12,3 +12,4 @@ $low-blue-bg: #f6f8fa
 #app
   font-family: Avenir, Helvetica, Arial, sans-serif
 </style>
+

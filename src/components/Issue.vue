@@ -5,7 +5,9 @@
 				{{ issue.title }}
 			</div>
 			<div class="issue__author">
-				<p>Автор: {{ issue.user.login }} от {{ dateCreated }}</p>
+				<p class="issue__author--date">
+					Автор: {{ issue.user.login }} от {{ dateCreated }}
+				</p>
 			</div>
 		</div>
 		<div class="issue__number"># {{ issue.number }}</div>
@@ -14,7 +16,6 @@
 
 <script>
 import { formatDate } from '../utils/formatDate';
-
 
 export default {
 	name: 'Issue',

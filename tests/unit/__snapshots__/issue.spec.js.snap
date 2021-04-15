@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unit tests for issue component should match the snapshot 1`] = `
+<div class="issue">
+  <div class="issue__main-info">
+    <div class="issue__tag">
+      Ошибка в асинхронных операциях vue
+    </div>
+    <div class="issue__author">
+      <p class="issue__author--date">
+        Автор: alxxsck от 09.10.2012
+      </p>
+    </div>
+  </div>
+  <div class="issue__number"># 12321</div>
+</div>
+`;
