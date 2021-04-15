@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`unit tests for issues page should match the snapshot 1`] = `
+<div class="wrapper">
+  <p class="backPage">Назад</p>
+  <div class="about-issue">
+    <div class="about-issue__header">
+      <div class="about-issue__header--user">
+        alxxsck
+      </div>
+      <p class="isRight">написал</p>
+      <div class="about-issue__header--date">09.10.2012</div>
+    </div>
+    <main class="about-issue__main">
+      <p class="about-issue__main--text">
+      <h3 id="somemarkdowntext">Some markDown text</h3>
+      </p>
+    </main>
+  </div>
+</div>
+`;
