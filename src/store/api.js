@@ -1,6 +1,6 @@
 const { Octokit } = require('@octokit/core');
 
-const token = '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';
+const token = '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';
 const octokit = new Octokit({ auth: token });
 
 export function getIssues() {

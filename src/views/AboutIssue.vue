@@ -17,8 +17,6 @@
 </template>
 
 <script>
-import { formatDate } from '../utils/formatDate';
-
 const showdown = require('showdown'),
 	converter = new showdown.Converter();
 
@@ -40,7 +38,7 @@ export default {
 	},
 	computed: {
 		createdDate() {
-			return formatDate(this.issueInfo.created_at);
+			return new Date(this.issueInfo.created_at).toLocaleDateString();
 		},
 		mainText() {
 			return converter.makeHtml(this.issueInfo.body);

@@ -15,8 +15,6 @@
 </template>
 
 <script>
-import { formatDate } from '../utils/formatDate';
-
 export default {
 	name: 'Issue',
 	props: {
@@ -29,7 +27,7 @@ export default {
 	},
 	computed: {
 		dateCreated() {
-			return formatDate(this.issue.created_at);
+			return new Date(this.issue.created_at).toLocaleDateString();
 		}
 	},
 	methods: {
